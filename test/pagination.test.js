@@ -1,3 +1,4 @@
+
 const { paginationMeta, sendPaginated } = require("../src/pagination");
 
 describe("Pagination utilities", () => {
@@ -34,5 +35,23 @@ describe("Pagination utilities", () => {
         hasPreviousPage: false
       }
     });
+  });
+
+  test("rejects an invalid page number", () => {
+    expect(() => paginationMeta(100, 0, 10)).toThrow(
+      "Page must be a positive integer"
+    );
+  });
+
+  test("rejects an invalid limit", () => {
+    expect(() => paginationMeta(100, 1, 0)).toThrow(
+      "Limit must be a positive integer"
+    );
+  });
+
+  test("rejects a negative total", () => {
+    expect(() => paginationMeta(-10, 1, 10)).toThrow(
+      "Total must be a non-negative integer"
+    );
   });
 });
