@@ -1,0 +1,23 @@
+{
+  "name": "express-response-kit-sid",
+  "version": "1.0.0",
+  "description": "A reusable Express.js toolkit for standardized API responses, pagination, and error handling",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "api",
+    "middleware",
+    "response-handler"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}
