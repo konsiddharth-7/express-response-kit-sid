@@ -1,4 +1,3 @@
-
 # Express Response Kit
 
 A lightweight Express.js toolkit for creating standardized API responses, handling errors, and managing pagination.
@@ -14,13 +13,15 @@ A lightweight Express.js toolkit for creating standardized API responses, handli
 
 ## Installation
 
+Install the package using npm:
+
 ```bash
 npm install express-response-kit-sid
 ```
 
 ## Usage
 
-Import the required functions:
+Import the functions you need from the package:
 
 ```javascript
 const {
@@ -57,7 +58,7 @@ app.get("/users/:id", (req, res) => {
 
 ### 3. paginationMeta()
 
-Generates pagination metadata.
+Generates pagination metadata based on the total number of records, current page, and page limit.
 
 ```javascript
 const meta = paginationMeta(100, 2, 10);
@@ -88,7 +89,7 @@ app.get("/users", (req, res) => {
 
 ### 5. asyncHandler()
 
-Forwards errors from asynchronous Express route handlers to error middleware.
+Wraps asynchronous Express route handlers and forwards errors to the error-handling middleware.
 
 ```javascript
 app.get("/data", asyncHandler(async (req, res) => {
@@ -100,7 +101,7 @@ app.get("/data", asyncHandler(async (req, res) => {
 
 ### 6. errorHandler()
 
-Centralized Express error-handling middleware.
+Provides centralized Express error handling.
 
 Register it after your routes:
 
@@ -123,6 +124,8 @@ const {
 
 const app = express();
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   sendSuccess(res, { status: "running" }, "Welcome");
 });
@@ -140,37 +143,82 @@ app.listen(3000, () => {
 
 ## Running Tests
 
-Clone the repository and install development dependencies:
+Clone the repository:
+
+```bash
+git clone https://github.com/konsiddharth-7/express-response-kit-sid.git
+cd express-response-kit-sid
+```
+
+Install the development dependencies:
 
 ```bash
 npm install
 ```
 
-Run the automated tests:
+Run the automated test suite:
 
 ```bash
 npm test
 ```
 
+The test suite uses Jest to verify the functionality of the package.
+
+### Test Coverage
+
+The tests cover:
+
+- Standardized success response formatting
+- Standardized error response formatting
+- Pagination metadata calculations
+- Paginated response generation
+- Async error handling
+- Express error middleware behavior
+
+### Expected Test Results
+
+The test suite should complete successfully with output similar to:
+
+```text
+PASS test/pagination.test.js
+PASS test/response.test.js
+PASS test/middleware.test.js
+
+Test Suites: 3 passed, 3 total
+Tests: 9 passed, 9 total
+```
+
 ## Project Structure
 
 ```text
-express-response-kit/
-├── src/
-│   ├── response.js
-│   ├── pagination.js
-│   ├── asyncHandler.js
-│   └── error.js
-├── test/
-│   ├── response.test.js
-│   ├── pagination.test.js
-│   └── middleware.test.js
+express-response-kit-sid/
 ├── examples/
 │   └── express-app.js
+├── src/
+│   ├── asyncHandler.js
+│   ├── error.js
+│   ├── pagination.js
+│   └── response.js
+├── test/
+│   ├── middleware.test.js
+│   ├── pagination.test.js
+│   └── response.test.js
+├── .gitignore
 ├── index.js
 ├── package.json
+├── package-lock.json
 └── README.md
 ```
+
+## npm Package
+
+Published package:
+
+https://www.npmjs.com/package/express-response-kit-sid
+
+## GitHub Repository
+
+https://github.com/konsiddharth-7/express-response-kit-sid
 
 ## License
 
